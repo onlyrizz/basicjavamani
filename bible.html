@@ -1,17 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bible Verse Design</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .verse-box {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      max-width: 600px;
+    }
+
+    .verse-box h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #ffd700;
+    }
+
+    .verse-box p {
+      font-size: 20px;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #ffd700;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ffae00;
+    }
+  </style>
+</head>
 <body>
   <div class="verse-box">
     <h2>Philippians 4:13</h2>
     <p>"I can do all things through Christ who strengthens me."</p>
+    <button onclick="changeVerse()">Show Another Verse</button>
   </div>
 
-<style>
-.verse-box {
-  background: linear-gradient(to right, #f9d423, #ff4e50);
-  color: white;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  font-family: 'Georgia', serif;
-}
-</style>
+  <script>
+    const verses = [
+      {
+        title: "Philippians 4:13",
+        text: "I can do all things through Christ who strengthens me."
+      },
+      {
+        title: "Philippians 4:6",
+        text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God."
+      },
+      {
+        title: "Jeremiah 29:11",
+        text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future."
+      },
+      {
+        title: "Isaiah 41:10",
+        text: "So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand."
+      },
+      {
+        title: "Psalm 23:1",
+        text: "The Lord is my shepherd, I lack nothing."
+      }
+    ];
+
+    let current = 0;
+
+    function changeVerse() {
+      current = (current + 1) % verses.length;
+      document.querySelector(".verse-box h2").textContent = verses[current].title;
+      document.querySelector(".verse-box p").textContent = `"${verses[current].text}"`;
+    }
+  </script>
 </body>
+</html>
