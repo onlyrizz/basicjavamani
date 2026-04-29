@@ -1,0 +1,46 @@
+<body>
+  <h2>Inventory System</h2>
+  Item: <input type="text" id="item">
+  Quantity: <input type="number" id="qty">
+  <button onclick="addItem()">Submit</button>
+  <label><input type="checkbox" id="viewTable" onchange="toggleTable()"> View table</label>
+
+  <table id="inventory" border="1" style="display:none;">
+    <tr><th>Item</th><th>Quantity</th></tr>
+  </table>
+
+<script>
+function addItem() {
+  let item = document.getElementById("item").value;
+  let qty = document.getElementById("qty").value;
+
+  if(item && qty) {
+    let table = document.getElementById("inventory");
+    let row = table.insertRow();
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+
+    cell1.textContent = item;
+    cell2.textContent = qty;
+
+    // Enable editing on double click
+    cell2.ondblclick = function() {
+      let input = document.createElement("input");
+      input.type = "number";
+      input.value = cell2.textContent;
+      cell2.textContent = "";
+      cell2.appendChild(input);
+
+      input.onblur = function() {
+        cell2.textContent = input.value;
+      };
+    };
+  }
+}
+
+function toggleTable() {
+  let table = document.getElementById("inventory");
+  table.style.display = document.getElementById("viewTable").checked ? "table" : "none";
+}
+</script>
+</body>

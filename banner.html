@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Simple JavaScript</title>
+ <style>
+   body {
+     background-color: lightblue;
+     font-family: Arial, sans-serif;
+     text-align: left;
+     padding: 20px;
+   }
+   #banner {
+     background-color: yellow;
+     padding: 20px;
+     border-radius: 8px;
+     margin-bottom: 20px ;
+   }
+ </style>
+</head>
+<body>
+ <div id="banner">
+   <h1>Hello I'm Rhys Garciano</h1>
+   <ul id="myList">
+     <li>I'm a CS Student in EAC Cavite.</li>
+   </ul>
+ </div>
+ <p>
+   Add new: <input type="text" id="newSkill" placeholder="add new here">
+ </p>
+ <button onclick="changeBannerBackground()">Change Banner Background</button>
+ <button onclick="changePageBackground()">Change Page Background</button>
+ <button onclick="addNewElement()">Add New Item on the List</button>
+ <script>
+   function changeBannerBackground() {
+     const banner = document.getElementById("banner");
+     banner.style.backgroundColor = banner.style.backgroundColor === "yellow" ? "orange" : "yellow";
+   }
+   function changePageBackground() {
+     document.body.style.backgroundColor = document.body.style.backgroundColor === "lightblue" ? "lightgreen" : "lightblue";
+   }
+   function addNewElement() {
+     const myInput = document.getElementById("newSkill").value;
+     if (myInput.trim() !== "") {
+       const ul = document.getElementById("myList");
+       const li = document.createElement("li");
+       li.textContent = myInput;
+       ul.appendChild(li);
+       document.getElementById("newSkill").value = "";
+     }
+   }
+ </script>
+</body>
+</html>
